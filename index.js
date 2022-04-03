@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const https = require("https");
+// const https = require("https");
 require("dotenv").config();
 const fs = require("fs");
 const port = process.env.PORT | 3000;
@@ -32,6 +32,9 @@ app.post("/complaint", async (req, res) => {
 //     console.log(`Server app listening on port https://localhost:${port}`)
 //   );
 
-app.listen(port, () =>
-  console.log(`Server app listening on port https://localhost:${port}`)
+var server_port = process.env.PORT || 80;
+var server_host = "0.0.0.0";
+
+app.listen(server_port, server_host, () =>
+  console.log(`Server app listening on port https://localhost:${server_port}`)
 );
