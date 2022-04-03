@@ -26,8 +26,12 @@ app.post("/complaint", async (req, res) => {
   res.json({ status: true });
 });
 
-https
-  .createServer(options, app)
-  .listen(port, () =>
-    console.log(`Server app listening on port https://localhost:${port}`)
-  );
+// https
+//   .createServer(options, app)
+//   .listen(port, () =>
+//     console.log(`Server app listening on port https://localhost:${port}`)
+//   );
+
+app.listen(port, () =>
+  console.log(`Server app listening on port https://localhost:${port}`)
+);
