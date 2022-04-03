@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 // const https = require("https");
 require("dotenv").config();
+var morgan = require("morgan");
 const fs = require("fs");
 const port = process.env.PORT | 3000;
 const options = {
@@ -10,9 +11,11 @@ const options = {
 };
 const { sendEmail } = require("./emailUntil");
 const { insertComplaint } = require("./dbUntil");
+morgan("tiny");
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.get("/", (req, res) => res.send("Hello this is server!"));
+app.use(morgan("combined"));
 app.post("/complaint", async (req, res) => {
   const { name, email, subject, message } = req.body;
 
